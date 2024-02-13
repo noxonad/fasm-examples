@@ -28,11 +28,10 @@ _start:
     _malloc_fail_skip:
 
     ; Write something in that memory
-    mov eax, [mem]      ; load the address allocated by malloc
+    mov eax, [mem]          ; load the address allocated by malloc
     mov bx, 10
-    mov [eax], bx      ; write double word (10) into the first index
-    mov bx, 5
-    mov [eax+2], bx    ; write double word (5) into the second index 
+    mov [eax], bx           ; write word (10) into the first index
+    mov [eax+2], word 5     ; write word (5) into the second index 
 
     ; Print the first value
     mov rdi, int_msg
