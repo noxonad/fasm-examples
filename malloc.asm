@@ -20,7 +20,7 @@ _start:
     mov [mem], eax              ; save the address to mem
     jmp _malloc_fail_skip       ; malloc is not failed
 
-    ; Print the message on fail and exit
+    ; Print the message on fail (and exit)
     _malloc_fail:
         mov rdi, fail_msg
         call printf
@@ -28,17 +28,26 @@ _start:
     _malloc_fail_skip:
 
     ; Write something in that memory
-    mov [mem+4], 10
-    mov [mem+8], 5
+    mov eax, [mem]      ; load the address allocated by malloc
+    mov ebx, 10
+    mov [eax], ebx      ; write double word (10) into the first index
+    mov ebx, 5
+    mov [eax+4], ebx    ; write double word (5) into the second index 
 
     ; Print the first value
     mov rdi, int_msg
-    mov esi, [mem+4]
+    mov esi, [eax]
     call printf
 
     ; Print the second value
+    mov eax, [mem]      ; make sure eax has the address from malloc
     mov rdi, int_msg
-    mov esi, [mem+8]
+    mov esi, [eax+4]
+    call printf
+
+    ; Printing the mem+4 value is wrong
+    mov rdi, int_msg
+    mov esi, [mem+4]
     call printf
 
     ; Free the memory
