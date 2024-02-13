@@ -52,3 +52,9 @@ $ make clean
 According to [this](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md), the register order for the syscalls is as follows: `rdi, rsi, rdx, r10, r8, r9`, and the result is put into `rax`.
 
 Calling conventions for function calling, according to [this post](https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-and-user-space-f#2538212) is as follows: `rdi, rsi, rdx, rcx, r8 and r9`
+
+# Contribution
+
+I'm far from being a fasm expert and if you want to point out some mistakes or provide more examples, you're free to do so. I hope that will help not only me, but also other fasm newcomers that want to go beyond writing a hello world program.
+
+The code is distributed under the MIT licence so feel free to use it as an example database for your tutoring.
